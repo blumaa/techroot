@@ -23,7 +23,7 @@ app.use(
 
 function main() {
   const port = process.env.PORT || 5000;
-  const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@klinkster-cwd1q.mongodb.net/test?retryWrites=true&w=majority`;
+  const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-bzxt8.mongodb.net/test?retryWrites=true&w=majority`;
   // console.log(uri)
   mongoose
     .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
