@@ -56,13 +56,15 @@ function Signup(props) {
         setError(null);
         setLoading(false);
 
-        const { _id, token } = await data.data.createUser;
+        const { _id, token, nickname, role } = await data.data.createUser;
 
         dispatch({
           type: actions.SET_AUTH_USER,
           authUser: {
             _id,
-            email
+            email,
+            nickname,
+            role
           }
         });
         localStorage.setItem("token", token);
@@ -74,6 +76,12 @@ function Signup(props) {
     }
   };
 
+  const selectRole = (e) => {
+    console.log(e.target.value)
+    setRole(e.target.value)
+  }
+  console.log(role)
+  console.log(nickname)
   return (
     <>
       <h1>Sign up</h1>
@@ -107,7 +115,7 @@ function Signup(props) {
             value={nickname}
             onChange={handleChange(setNickname)}
           />
-          <select className="form-input" onChange={setRole}>
+          <select className="form-input" onChange={(e)=>setRole(e.target.value)}>
             <option value="developer">Developer</option>
             <option value="recruiter">Recruiter</option>
           </select>
