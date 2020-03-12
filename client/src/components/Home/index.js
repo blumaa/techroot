@@ -10,7 +10,7 @@ function Home() {
 
     const { authUser } = useMappedState(mapState);
 
-    return authUser ? <AuthHome /> : <NonAuthHome />
+    return authUser ? <AuthHome authUser={authUser}/> : <NonAuthHome />
 }
 
 export default Home;

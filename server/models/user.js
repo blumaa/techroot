@@ -10,6 +10,14 @@ const userSchema = new Schema({
     required: true,
     min: 8,
     max: 32
-  }
+  },
+  nickname: {
+    type: String,
+    required: false
+  },
+  role: {
+    type: String,
+    required: false
+  },
 })
 export default mongoose.model('User', userSchema);

@@ -11,6 +11,8 @@ function Signup(props) {
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [nickname, setNickname] = useState("");
+  const [role, setRole] = useState("");
   const dispatch = useDispatch();
 
   const handleChange = setter => e => {
@@ -29,10 +31,14 @@ function Signup(props) {
                             email: "${email}"
                             password: "${password}"
                             confirm: "${confirm}"
+                            nickname: "${nickname}"
+                            role: "${role}"
                         }) {
                             _id
                             token
                             email
+                            nickname
+                            role
                         }
                     }
                 `
@@ -94,6 +100,17 @@ function Signup(props) {
             value={confirm}
             onChange={handleChange(setConfirm)}
           />
+          <input
+            className="form-input"
+            type="text"
+            placeholder="nickname"
+            value={nickname}
+            onChange={handleChange(setNickname)}
+          />
+          <select className="form-input" onChange={setRole}>
+            <option value="developer">Developer</option>
+            <option value="recruiter">Recruiter</option>
+          </select>
 
           <div>
             <span style={{ color: "red" }}>{error || ""}</span>

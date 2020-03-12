@@ -28,6 +28,8 @@ function Login(props) {
                             _id
                             token
                             email
+                            nickname
+                            role
                         }
                     }
                 `
@@ -40,15 +42,18 @@ function Login(props) {
                 setLoading(false);
             }
             else {
+                console.log(data)
                 setError(null);
                 setLoading(false);
-                const { _id, token } = await data.data.login;
+                const { _id, token, nickname, role } = await data.data.login;
 
                 dispatch({
                     type: actions.SET_AUTH_USER,
                     authUser: {
                         _id,
-                        email
+                        email,
+                        nickname,
+                        role
                     }
                 })
                 localStorage.setItem('token', token);
@@ -71,7 +76,7 @@ function Login(props) {
 
                     <div><span style={{ color: "red" }}>{error || ""}</span></div>
 
-                    <input className="form-submit" type="submit" value={loading ? "Verifying..." : "Register"} />
+                    <input className="form-submit" type="submit" value={loading ? "Verifying..." : "Login"} />
                 </form>
             </div>
         </>

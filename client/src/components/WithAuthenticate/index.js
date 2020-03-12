@@ -14,6 +14,8 @@ async function authenticate(dispatch) {
                        verifyToken(token: "${token}") {
                            _id
                            email
+                           nickname
+                           role
                        }
                    }
                 `
@@ -27,7 +29,9 @@ async function authenticate(dispatch) {
                     type: actions.SET_AUTH_USER,
                     authUser: {
                         _id: user._id,
-                        email: user.email
+                        email: user.email,
+                        nickname: user.nickname,
+                        role: user.role
                     }
                 })
             }

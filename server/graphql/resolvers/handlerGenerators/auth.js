@@ -10,7 +10,9 @@ export async function createUser(args) {
     const {
       email,
       password,
-      confirm
+      confirm,
+      nickname,
+      role
     } = args.userInput; //retrieve values from arguments
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -22,7 +24,9 @@ export async function createUser(args) {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      nickname,
+      role
     }, (err) => { if (err) throw err });
     user.save();
     // if user is registered without errors
